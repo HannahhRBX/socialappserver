@@ -57,11 +57,11 @@ app.use("/games",gameRoutes)
 app.use("/posts",postRoutes)
 
 // Initialising MongoDB
-const PORT = 10000 || 5001;
-const DB_URL = "mongodb+srv://admin:Password123@socialapp.7endutk.mongodb.net/?retryWrites=true&w=majority" || "";
+const PORT = process.env.PORT || 5001;
+const DB_URL = process.env.MONGO_DB || "";
 
 // Initialising server
-mongoose.connect("mongodb+srv://admin:Password123@socialapp.7endutk.mongodb.net/?retryWrites=true&w=majority").then(()=>{
+mongoose.connect(process.env.MONGO_DB).then(()=>{
     app.listen(PORT,() => console.log(`Server listening on Port: ${PORT}`))
 }).catch((error)=>console.log(`${error}: failed to connect.`))
 
